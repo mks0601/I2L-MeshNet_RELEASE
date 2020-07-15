@@ -1,2 +1,6 @@
-# I2L-MeshNet_RELEASE
-Official PyTorch implementation of "I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image", ECCV 2020
+# Codes will be available soon!
+
+<p align="center">
+<img src="https://drive.google.com/uc?export=view&id=1V7hDCUgPAuTdxNGNIZaWe3CVVQEMsJFp" width="800" height="300">
+</p>
+
