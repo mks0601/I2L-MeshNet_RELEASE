@@ -1,0 +1,11 @@
+name: smplpytorch
+
+dependencies:
+  - opencv
+  - python=3.7
+  - matplotlib
+  - numpy
+  - pytorch
+  - pip
+  - pip:
+    - git+https://github.com/hassony2/chumpy.git
