@@ -7,7 +7,7 @@
 </p> 
 
 <p align="middle">
-<img src="https://drive.google.com/uc?export=view&id=1eFR0ZEr4KV7jKjI_fVs3ZQWRE1b9zWzG" width="400" height="240"><img src="https://drive.google.com/uc?export=view&id=16etbYwRrjH-Zc04AAdqASjyyoLXFCXKc" width="400" height="240"><img src="https://drive.google.com/uc?export=view&id=1L6GbPPv_VR1DFJ418OoRaXu5NJsrAGOj" width="400" height="240">
+<img src="https://drive.google.com/uc?export=view&id=1eFR0ZEr4KV7jKjI_fVs3ZQWRE1b9zWzG" width="350" height="210"><img src="https://drive.google.com/uc?export=view&id=16etbYwRrjH-Zc04AAdqASjyyoLXFCXKc" width="350" height="210"><img src="https://drive.google.com/uc?export=view&id=1L6GbPPv_VR1DFJ418OoRaXu5NJsrAGOj" width="350" height="210">
 </p>
   
   
