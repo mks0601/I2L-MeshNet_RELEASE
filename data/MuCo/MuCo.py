@@ -80,22 +80,6 @@ class MuCo(torch.utils.data.Dataset):
             root_depths = [ann['keypoints_cam'][self.muco_root_joint_idx][2] for ann in anns]
             closest_pid = root_depths.index(min(root_depths))
             pid_list = [closest_pid]
-            """
-            for i in range(len(anns)):
-                if i == closest_pid:
-                    continue
-                picked = True
-                for j in range(len(anns)):
-                    if i == j:
-                        continue
-                    dist = (np.array(anns[i]['keypoints_cam'][self.muco_root_joint_idx]) - np.array(anns[j]['keypoints_cam'][self.muco_root_joint_idx])) ** 2
-                    dist_2d = math.sqrt(np.sum(dist[:2]))
-                    dist_3d = math.sqrt(np.sum(dist))
-                    if dist_2d < 500 or dist_3d < 500:
-                        picked = False
-                if picked:
-                    pid_list.append(i)
-            """
             for pid in pid_list:
                 joint_cam = np.array(anns[pid]['keypoints_cam'])
                 joint_img = np.array(anns[pid]['keypoints_img'])
