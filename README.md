@@ -133,14 +133,14 @@ ${ROOT}
 * There are two stages. 1) `lixel` and 2) `param`. In the `lixel` stage, I2L-MeshNet predicts lixel-based 1D heatmaps for each human joint and mesh vertex. In `param` stage, I2L-MeshNet predicts SMPL parameters from lixel-based 1D heatmaps.
   
 ### Train  
-**1. lixel stage**
+#### 1. lixel stage**
 First, you need to train I2L-MeshNet of `lixel` stage. In the `main` folder, run  
 ```bash  
 python train.py --gpu 0-3 --stage lixel 
 ```  
 to train I2L-MeshNet in the `lixel` stage on the GPU 0,1,2,3.  
 
-**2. param stage**
+#### 2. param stage
 Once you pre-trained I2L-MeshNet in `lixel` stage, you can resume training in `param` stage. In the `main` folder, run  
 ```bash  
 python train.py --gpu 0-3 --stage param --continue
