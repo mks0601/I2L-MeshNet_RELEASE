@@ -19,7 +19,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2
 You can try quick demo at `demo` folder.  
   * Download the pre-trained I2L-MeshNet in [here](https://drive.google.com/drive/folders/1RdEeQZX4d6j_4VL8UXyv9fmrBr85_k8T?usp=sharing).
 * Prepare `input.jpg` and pre-trained snapshot at `demo` folder.
-* Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl` at `common/utils/smplpytorch/smplpytorch/native/models` from `https://smpl.is.tue.mpg.de`.
+* Download `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` at `common/utils/smplpytorch/smplpytorch/native/models` from `https://smpl.is.tue.mpg.de`.
 * Run `python demo.py --gpu 0 --stage param --test_epoch 7` if you want to run on gpu 0.
 * You can see `output_mesh.jpg` and `output_mesh.obj`.
 
