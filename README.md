@@ -4,12 +4,16 @@
   
 <p align="center">  
 <img src="https://drive.google.com/uc?export=view&id=1V7hDCUgPAuTdxNGNIZaWe3CVVQEMsJFp">  
-</p>  
+</p> 
+
+<p align="middle">
+<img src="https://drive.google.com/uc?export=view&id=1eFR0ZEr4KV7jKjI_fVs3ZQWRE1b9zWzG" width="300" height="200">
+</p>
   
   
 ## Introduction  
   
-This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image (ECCV 2020)](https://arxiv.org/)**.  
+This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image (ECCV 2020)](https://arxiv.org/abs/2008.03713)**.  
   
 ## Quick demo  
 You can try quick demo at `demo` folder.  
