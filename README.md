@@ -87,9 +87,9 @@ ${ROOT}
 |   |   |   |-- freihand_eval_coco.json
 |   |   |   |-- freihand_eval_data.json
 ```  
-* Download Human3.6M parsed data, SMPL parameters, and SMPL joint regression matrix [[data](https://drive.google.com/drive/folders/1kgVH-GugrLoc9XyvP6nRoaFpw3TmM5xK?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1s-yywb4zF_OOLMmw1rsYh_VZFilgSrrD?usp=sharing)][[SMPL joint regression matrix](https://drive.google.com/file/d/1I64riN0Np1Fop8acAiiJnmXL7SLnb7RY/view?usp=sharing)]
+* Download Human3.6M parsed data and SMPL parameters [[data](https://drive.google.com/drive/folders/1kgVH-GugrLoc9XyvP6nRoaFpw3TmM5xK?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1s-yywb4zF_OOLMmw1rsYh_VZFilgSrrD?usp=sharing)]
 * Download MuCo parsed/composited data and SMPL parameters [[data](https://drive.google.com/drive/folders/1yL2ey3aWHJnh8f_nhWP--IyC9krAPsQN?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1_JrrbHZICDTe1lqi8S6D_Y1ObmrerAoU?usp=sharing)] 
-* Download MS COCO SMPL parameters and SMPL joint regression matrix [[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1Dkb-q10O9S4gQgKhFTxEtlEPqFTy3GJV?usp=sharing)][[SMPL joint regression matrix](https://drive.google.com/file/d/1SUP0iD2ObJ7eEp3mfnuZs0BGmIiq1GeD/view?usp=sharing)]
+* Download MS COCO SMPL parameters [[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1Dkb-q10O9S4gQgKhFTxEtlEPqFTy3GJV?usp=sharing)]
 * Download 3DPW parsed data [[data](https://drive.google.com/drive/folders/1fWrx0jnWzcudU6FN6QCZWefaOFSAadgR?usp=sharing)]
 * Download FreiHAND parsed data [[data](https://drive.google.com/drive/folders/1QGWu_nWi5eyrWSkPEOMyK1tAGFWRXQjC?usp=sharing)] (`bbox` in `freihand_eval_coco.json` is from [Detectron2](https://github.com/facebookresearch/detectron2))
 * All annotation files follow [MS COCO format](http://cocodataset.org/#format-data).  
