@@ -50,7 +50,7 @@ ${ROOT}
 |-- data  
 |   |-- Human36M  
 |   |-- |-- rootnet_output  
-|   |   |-- bbox_root_human36m_output.json  
+|   |   |   |-- bbox_root_human36m_output.json  
 |   |   |-- images  
 |   |   |-- annotations   
 |   |   |-- J_regressor_h36m_correct.npy
