@@ -35,7 +35,7 @@ ${ROOT}
 |-- demo
 |-- common  
 |-- main  
-`-- output  
+|-- output  
 ```  
 * `data` contains data loading codes and soft links to images and annotations directories.  
 * `demo` contains demo codes.
@@ -118,7 +118,7 @@ ${ROOT}
 |-- |-- log  
 |-- |-- model_dump  
 |-- |-- result  
-`-- |-- vis  
+|-- |-- vis  
 ```  
 * Creating `output` folder as soft link form is recommended instead of folder form because it would take large storage capacity.  
 * `log` folder contains training log file.  
