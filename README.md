@@ -106,9 +106,9 @@ If you have a problem with 'Download limit' problem when tried to download datas
 
 ### Pytorch SMPL and MANO layer
 * For the SMPL layer, I used [smplpytorch](https://github.com/gulvarol/smplpytorch). The repo is already included in `common/utils/smplpytorch`.
-* Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` at `common/utils/smplpytorch/smplpytorch/native/models` from `https://smpl.is.tue.mpg.de`.
+* Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` at `common/utils/smplpytorch/smplpytorch/native/models` from [here](https://smpl.is.tue.mpg.de).
 * For the MANO layer, I used [manopth](https://github.com/hassony2/manopth). The repo is already included in `common/utils/manopth`.
-* Download `MANO_LEFT.pkl` and `MANO_RIGHT.pkl` at `common/utils/manopth/mano/models` from `https://mano.is.tue.mpg.de`.
+* Download `MANO_LEFT.pkl` and `MANO_RIGHT.pkl` at `common/utils/manopth/mano/models` from [here](https://mano.is.tue.mpg.de).
       
 ### Output  
 You need to follow the directory structure of the `output` folder as below.  
