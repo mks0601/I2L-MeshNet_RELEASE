@@ -141,15 +141,14 @@ First, you need to train I2L-MeshNet of `lixel` stage. In the `main` folder, run
 ```bash  
 python train.py --gpu 0-3 --stage lixel 
 ```  
-to train I2L-MeshNet in the `lixel` stage on the GPU 0,1,2,3.  
+to train I2L-MeshNet in the `lixel` stage on the GPU 0,1,2,3. `--gpu 0,1,2,3` can be used instead of `--gpu 0-3`. 
 
 #### 2. param stage
 Once you pre-trained I2L-MeshNet in `lixel` stage, you can resume training in `param` stage. In the `main` folder, run  
 ```bash  
 python train.py --gpu 0-3 --stage param --continue
 ```  
-to train I2L-MeshNet in the `param` stage on the GPU 0,1,2,3.  
-If you want to continue experiment, use `--continue`. `--gpu 0,1,2,3` can be used instead of `--gpu 0-3`.  
+to train I2L-MeshNet in the `param` stage on the GPU 0,1,2,3. `--gpu 0,1,2,3` can be used instead of `--gpu 0-3`.  
   
 ### Test  
 Place trained model at the `output/model_dump/`.  Choose the stage you want to test among `lixel` and `param`.
