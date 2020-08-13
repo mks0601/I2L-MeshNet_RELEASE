@@ -50,11 +50,6 @@ class Trainer(Base):
 
     def get_optimizer(self, model):
         if cfg.stage == 'lixel':
-            self.pose_backbone = pose_backbone
-            self.pose_net = pose_net
-            self.pose2feat = pose2feat
-            self.mesh_backbone = mesh_backbone
-            self.mesh_net = mesh_net
             optimizer = torch.optim.Adam(list(model.module.pose_backbone.parameters()) + \
                                         list(model.module.pose_net.parameters()) + \
                                         list(model.module.pose2feat.parameters()) + \
