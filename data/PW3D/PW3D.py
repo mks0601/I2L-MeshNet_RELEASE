@@ -72,8 +72,7 @@ class PW3D(torch.utils.data.Dataset):
             else:
                 bbox = process_bbox(np.array(ann['bbox']), img['width'], img['height'])
                 if bbox is None: continue
-                root_joint_depth = joint_cam[self.root_joint_idx][2]
-             
+
             datalist.append({
                 'img_path': img_path,
                 'img_shape': (img_height, img_width),
@@ -123,6 +122,13 @@ class PW3D(torch.utils.data.Dataset):
             annot = annots[cur_sample_idx + n]
             out = outs[n]
             
+            # h36m joint from gt mesh
+            mesh_gt_cam = out['mesh_coord_cam_target']
+            pose_coord_gt_h36m = np.dot(self.h36m_joint_regressor, mesh_gt_cam)
+            depth_gt_h36m = pose_coord_gt_h36m[self.h36m_root_joint_idx,2]
+            pose_coord_gt_h36m = pose_coord_gt_h36m - pose_coord_gt_h36m[self.h36m_root_joint_idx,None] # root-relative
+            pose_coord_gt_h36m = pose_coord_gt_h36m[self.h36m_eval_joint,:]
+            
             # mesh from lixel
             # x,y: resize to input image space and perform bbox to image affine transform
             mesh_out_img = out['mesh_coord_img']
@@ -131,7 +137,10 @@ class PW3D(torch.utils.data.Dataset):
             mesh_out_img_xy1 = np.concatenate((mesh_out_img[:,:2], np.ones_like(mesh_out_img[:,:1])),1)
             mesh_out_img[:,:2] = np.dot(out['bb2img_trans'], mesh_out_img_xy1.transpose(1,0)).transpose(1,0)[:,:2]
             # z: devoxelize and translate to absolute depth
-            root_joint_depth = annot['root_joint_depth']
+            if cfg.use_gt_info:
+                root_joint_depth = depth_gt_h36m
+            else:
+                root_joint_depth = annot['root_joint_depth']
             mesh_out_img[:,2] = (mesh_out_img[:,2] / cfg.output_hm_shape[0] * 2. - 1) * (cfg.bbox_3d_size / 2)
             mesh_out_img[:,2] = mesh_out_img[:,2] + root_joint_depth
             # camera back-projection
@@ -139,11 +148,7 @@ class PW3D(torch.utils.data.Dataset):
             focal, princpt = cam_param['focal'], cam_param['princpt']
             mesh_out_cam = pixel2cam(mesh_out_img, focal, princpt)
             
-            # h36m joint from gt mesh
-            mesh_gt_cam = out['mesh_coord_cam_target']
-            pose_coord_gt_h36m = np.dot(self.h36m_joint_regressor, mesh_gt_cam)
-            pose_coord_gt_h36m = pose_coord_gt_h36m - pose_coord_gt_h36m[self.h36m_root_joint_idx,None] # root-relative
-            pose_coord_gt_h36m = pose_coord_gt_h36m[self.h36m_eval_joint,:]
+
 
             # h36m joint from lixel mesh
             pose_coord_out_h36m = np.dot(self.h36m_joint_regressor, mesh_out_cam)
