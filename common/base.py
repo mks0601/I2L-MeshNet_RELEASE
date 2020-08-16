@@ -107,12 +107,17 @@ class Trainer(Base):
         self.vertex_num = trainset3d_loader[0].vertex_num
         self.joint_num = trainset3d_loader[0].joint_num
         
-        if len(trainset2d_loader) > 0:
+        if len(trainset3d_loader) > 0 and len(trainset2d_loader) > 0:
             trainset3d_loader = MultipleDatasets(trainset3d_loader, make_same_len=False)
             trainset2d_loader = MultipleDatasets(trainset2d_loader, make_same_len=False)
             trainset_loader = MultipleDatasets([trainset3d_loader, trainset2d_loader], make_same_len=True)
+        elif len(trainset3d_loader) > 0:
+            trainset_loader = MultipleDatasets(trainset3d_loader, make_same_len=False)
+        elif len(trainset2d_loader) > 0:
+            trainset_loader = MultipleDatasets(trainset2d_loader, make_same_len=False)
         else:
-            trainset_loader = trainset3d_loader
+            assert 0, "Both 3D training set and 2D training set have zero length."
+            
         self.itr_per_epoch = math.ceil(len(trainset_loader) / cfg.num_gpus / cfg.train_batch_size)
         self.batch_generator = DataLoader(dataset=trainset_loader, batch_size=cfg.num_gpus*cfg.train_batch_size, shuffle=True, num_workers=cfg.num_thread, pin_memory=True)
 
