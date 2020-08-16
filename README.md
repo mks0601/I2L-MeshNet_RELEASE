@@ -21,7 +21,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2
   
 ## Quick demo  
 * Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`
-* Download the pre-trained I2L-MeshNet from [here](https://drive.google.com/drive/folders/14SJKZuCudli2xNN6pSh1bJepIZYlBfSE?usp=sharing). This is not the [best accurate I2L-MeshNet](https://drive.google.com/drive/folders/1Xf_Z2vgxyb_B4yuWjqxU2F-OfV1RKk_N?usp=sharing), but provides visually smooth meshes. [Here]() is discussion about this.
+* Download the pre-trained I2L-MeshNet from [here](https://drive.google.com/drive/folders/14SJKZuCudli2xNN6pSh1bJepIZYlBfSE?usp=sharing). This is not the [best accurate I2L-MeshNet](https://drive.google.com/drive/folders/1Xf_Z2vgxyb_B4yuWjqxU2F-OfV1RKk_N?usp=sharing), but provides visually smooth meshes. [Here](https://github.com/mks0601/I2L-MeshNet_RELEASE#i2l-meshnet-for-mesh-visualization) is discussion about this.
 * Prepare `input.jpg` and pre-trained snapshot at `demo` folder.
 * Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` at `common/utils/smplpytorch/smplpytorch/native/models` from [here](https://smpl.is.tue.mpg.de).
 * Go to `demo` folder and run `python demo.py --gpu 0 --stage param --test_epoch 8` if you want to run on gpu 0.
