@@ -21,11 +21,11 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2
   
 ## Quick demo  
 * Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`
-* Download the pre-trained I2L-MeshNet from [here](https://drive.google.com/drive/folders/1RdEeQZX4d6j_4VL8UXyv9fmrBr85_k8T?usp=sharing).
+* Download the pre-trained I2L-MeshNet from [here](https://drive.google.com/drive/folders/14SJKZuCudli2xNN6pSh1bJepIZYlBfSE?usp=sharing). This is not the [best accurate I2L-MeshNet](https://drive.google.com/drive/folders/1Xf_Z2vgxyb_B4yuWjqxU2F-OfV1RKk_N?usp=sharing), but provides visually smooth meshes. [Here]() is discussion about this.
 * Prepare `input.jpg` and pre-trained snapshot at `demo` folder.
 * Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` at `common/utils/smplpytorch/smplpytorch/native/models` from [here](https://smpl.is.tue.mpg.de).
-* Go to `demo` folder and run `python demo.py --gpu 0 --stage param --test_epoch 7` if you want to run on gpu 0.
-* You can see `output_mesh.jpg` and `output_mesh.obj`.
+* Go to `demo` folder and run `python demo.py --gpu 0 --stage param --test_epoch 8` if you want to run on gpu 0.
+* You can see `output_mesh_lixel.jpg`, `output_mesh_param.jpg`, `rendered_mesh_lixel.jpg`, `rendered_mesh_param.jpg`, `output_mesh_lixel.obj`, and `output_mesh_param.obj`. `*_lixel.*` are from lixel-based 1D heatmap of mesh vertices and `*_param.*` are from regressed SMPL parameters.
 
 ## Directory  
 ### Root  
@@ -246,6 +246,30 @@ Get bounding box and root from ../data/FreiHAND/rootnet_output/bbox_root_freihan
 Saved at ../output/result/pred.json
 ```
   
+  #### I2L-MeshNet for mesh visualization
+`loss['joint_orig']` and `loss['mesh_joint_orig']` in `main/model.py` makes the lixel-based meshes visually not smooth but 3D pose from meshes more accurate. This is because the loss functions are calculated from joint coordinates of each dataset, not from SMPL joint set. Thus, for the visually pleasant lixel-based meshes, disable the two loss functions when training.
+* Download I2L-MeshNet trained on [[Human3.6M+MuCo+MSCOCO] without `loss['joint_orig']` and `loss['mesh_joint_orig']`](https://drive.google.com/drive/folders/14SJKZuCudli2xNN6pSh1bJepIZYlBfSE?usp=sharing).
+* Below is the test result on 3DPW dataset. As the results show, it is worse than the above [best accurate I2L-MeshNet](https://github.com/mks0601/I2L-MeshNet_RELEASE#3dpw-dataset).
+
+```
+$ python test.py --gpu 4 --stage param --test_epoch 8
+>>> Using GPU: 4
+Stage: param
+08-16 13:56:54 Creating dataset...
+loading annotations into memory...
+Done (t=7.05s)
+creating index...
+index created!
+Get bounding box and root from ../data/PW3D/rootnet_output/bbox_root_pw3d_output.json
+08-16 13:57:04 Load checkpoint from /home/mks0601/workspace/I2L-MeshNet/main/../output/model_dump/snapshot_8.pth.tar
+08-16 13:57:04 Creating graph...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8879/8879 [17:42<00:00,  3.58it/s]
+MPJPE from lixel mesh: 93.47 mm
+PA MPJPE from lixel mesh: 61.95 mm
+MPJPE from param mesh: 99.34 mm
+PA MPJPE from param mesh: 62.47 mm
+```
+
 ## Reference  
 ```  
 @InProceedings{Moon_2020_ECCV_I2L-MeshNet,  
@@ -255,4 +279,5 @@ booktitle = {European Conference on Computer Vision (ECCV)},
 year = {2020}  
 }  
 ```
+
 

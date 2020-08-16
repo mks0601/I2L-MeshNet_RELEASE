@@ -15,7 +15,8 @@ sys.path.insert(0, osp.join('..', 'common'))
 from config import cfg
 from model import get_model
 from utils.preprocessing import process_bbox, generate_patch_image
-from utils.vis import vis_mesh, save_obj
+from utils.transforms import pixel2cam, cam2pixel
+from utils.vis import vis_mesh, save_obj, render_mesh, optimize_camera
 
 sys.path.insert(0, cfg.smpl_path)
 from smplpytorch.pytorch.smpl_layer import SMPL_Layer
@@ -58,6 +59,8 @@ skeleton = ( (0,1), (1,4), (4,7), (7,10), (0,2), (2,5), (5,8), (8,11), (0,3), (3
 vertex_num = 6890
 smpl_layer = SMPL_Layer(gender='neutral', model_root=cfg.smpl_path + '/smplpytorch/native/models')
 face = smpl_layer.th_faces.numpy()
+joint_regressor = smpl_layer.th_J_regressor.numpy()
+root_joint_idx = 0
 
 # snapshot load
 model_path = './snapshot_%d.pth.tar' % int(args.test_epoch)
@@ -73,13 +76,13 @@ model.eval()
 # prepare input image
 transform = transforms.ToTensor()
 img_path = 'input.jpg'
-img = cv2.imread(img_path)
+original_img = cv2.imread(img_path)
+original_img_height, original_img_width = original_img.shape[:2]
 
 # prepare bbox
-bbox = [164, 93, 222, 252] # xmin, ymin, width, height
-bbox = process_bbox(bbox, img.shape[1], img.shape[0])
-assert len(bbox) == 4, 'Please set bbox'
-img, img2bb_trans, bb2img_trans = generate_patch_image(img, bbox, 1.0, 0.0, False, cfg.input_img_shape) 
+bbox = [139.41, 102.25, 222.39, 241.57] # xmin, ymin, width, height
+bbox = process_bbox(bbox, original_img_width, original_img_height)
+img, img2bb_trans, bb2img_trans = generate_patch_image(original_img, bbox, 1.0, 0.0, False, cfg.input_img_shape) 
 img = transform(img.astype(np.float32))/255
 img = img.cuda()[None,:,:,:]
 
@@ -89,19 +92,49 @@ targets = {}
 meta_info = {'bb2img_trans': bb2img_trans}
 with torch.no_grad():
     out = model(inputs, targets, meta_info, 'test')
+img = img[0].cpu().numpy().transpose(1,2,0) # cfg.input_img_shape[1], cfg.input_img_shape[0], 3
+mesh_lixel_img = out['mesh_coord_img'][0].cpu().numpy()
+mesh_param_cam = out['mesh_coord_cam'][0].cpu().numpy()
 
-img = img[0].cpu().numpy()
-mesh_img = out['mesh_coord_img'][0].cpu().numpy()
-mesh_cam = out['mesh_coord_cam'][0].cpu().numpy()
+# restore mesh_lixel_img to original image space and continuous depth space
+mesh_lixel_img[:,0] = mesh_lixel_img[:,0] / cfg.output_hm_shape[2] * cfg.input_img_shape[1]
+mesh_lixel_img[:,1] = mesh_lixel_img[:,1] / cfg.output_hm_shape[1] * cfg.input_img_shape[0]
+mesh_lixel_img[:,:2] = np.dot(bb2img_trans, np.concatenate((mesh_lixel_img[:,:2], np.ones_like(mesh_lixel_img[:,:1])),1).transpose(1,0)).transpose(1,0)
+mesh_lixel_img[:,2] = (mesh_lixel_img[:,2] / cfg.output_hm_shape[0] * 2. - 1) * (cfg.bbox_3d_size / 2)
 
-# visualize mesh in 2D space
-vis_img = img.copy() * 255
-vis_img = vis_img.astype(np.uint8)
-vis_img = np.transpose(vis_img,(1,2,0)).copy()
-mesh_img[:,0] = mesh_img[:,0] / cfg.output_hm_shape[2] * cfg.input_img_shape[1]
-mesh_img[:,1] = mesh_img[:,1] / cfg.output_hm_shape[1] * cfg.input_img_shape[0]
-vis_img = vis_mesh(vis_img, mesh_img)
-cv2.imwrite('output_mesh.jpg', vis_img)
+# root-relative 3D coordinates -> absolute 3D coordinates
+focal = (1500,1500);  princpt = (original_img_width/2, original_img_height/2);
+root_xy = np.dot(joint_regressor, mesh_lixel_img)[root_joint_idx,:2]
+root_depth = 11250.5732421875 # obtain this from RootNet (https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE/tree/master/demo)
+root_depth /= 1000 # output of RootNet is milimeter. change it to meter
+root_img = np.array([root_xy[0], root_xy[1], root_depth])
+root_cam = pixel2cam(root_img[None,:], focal, princpt)
+mesh_lixel_img[:,2] += root_depth
+mesh_lixel_cam = pixel2cam(mesh_lixel_img, focal, princpt)
+mesh_param_cam += root_cam.reshape(1,3)
+
+# visualize lixel mesh in 2D space
+vis_img = original_img.copy()
+vis_img = vis_mesh(vis_img, mesh_lixel_img)
+cv2.imwrite('output_mesh_lixel.jpg', vis_img)
+
+# visualize lixel mesh in 2D space
+vis_img = original_img.copy()
+mesh_param_img = cam2pixel(mesh_param_cam, focal, princpt)
+vis_img = vis_mesh(vis_img, mesh_param_img)
+cv2.imwrite('output_mesh_param.jpg', vis_img)
 
 # save mesh (obj)
-save_obj(mesh_cam, face, 'output_mesh.obj')
+save_obj(mesh_lixel_cam, face, 'output_mesh_lixel.obj')
+save_obj(mesh_param_cam, face, 'output_mesh_param.obj')
+
+# render mesh from lixel
+vis_img = original_img.copy()
+rendered_img = render_mesh(vis_img, mesh_lixel_cam, face, {'focal': focal, 'princpt': princpt})
+cv2.imwrite('rendered_mesh_lixel.jpg', rendered_img)
+
+# render mesh from param
+vis_img = original_img.copy()
+rendered_img = render_mesh(vis_img, mesh_param_cam, face, {'focal': focal, 'princpt': princpt})
+cv2.imwrite('rendered_mesh_param.jpg', rendered_img)
+
