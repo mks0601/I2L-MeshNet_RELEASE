@@ -179,7 +179,7 @@ Stage: param
 creating index...
 index created!
 Get bounding box and root from ../data/Human36M/rootnet_output/bbox_root_human36m_output.json
-08-10 00:26:16 Load checkpoint from /home/mks0601/workspace/I2L-MeshNet/main/../output/model_dump/snapshot_17.pth.tar
+08-10 00:26:16 Load checkpoint from ../output/model_dump/snapshot_17.pth.tar
 08-10 00:26:16 Creating graph...
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 35/35 [00:46<00:00,  1.09it/s]
 MPJPE from lixel mesh: 55.83 mm
@@ -223,7 +223,7 @@ Done (t=0.35s)
 creating index...
 index created!
 Load RootNet output from  ../data/MSCOCO/rootnet_output/bbox_root_coco_output.json
-08-10 00:34:39 Load checkpoint from /home/mks0601/workspace/I2L-MeshNet/main/../output/model_dump/snapshot_7.pth.tar
+08-10 00:34:39 Load checkpoint from ../output/model_dump/snapshot_7.pth.tar
 08-10 00:34:39 Creating graph...
 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [01:31<00:00,  1.05it/s]
 ```
@@ -261,7 +261,7 @@ Done (t=7.05s)
 creating index...
 index created!
 Get bounding box and root from ../data/PW3D/rootnet_output/bbox_root_pw3d_output.json
-08-16 13:57:04 Load checkpoint from /home/mks0601/workspace/I2L-MeshNet/main/../output/model_dump/snapshot_8.pth.tar
+08-16 13:57:04 Load checkpoint from ../output/model_dump/snapshot_8.pth.tar
 08-16 13:57:04 Creating graph...
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8879/8879 [17:42<00:00,  3.58it/s]
 MPJPE from lixel mesh: 93.47 mm
