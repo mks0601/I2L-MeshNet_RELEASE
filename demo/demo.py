@@ -16,7 +16,7 @@ from config import cfg
 from model import get_model
 from utils.preprocessing import process_bbox, generate_patch_image
 from utils.transforms import pixel2cam, cam2pixel
-from utils.vis import vis_mesh, save_obj, render_mesh, optimize_camera
+from utils.vis import vis_mesh, save_obj, render_mesh
 
 sys.path.insert(0, cfg.smpl_path)
 from smplpytorch.pytorch.smpl_layer import SMPL_Layer

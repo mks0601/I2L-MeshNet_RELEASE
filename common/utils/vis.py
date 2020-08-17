@@ -4,7 +4,8 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from config import cfg
+import pyrender
+import trimesh
 
 def vis_keypoints_with_skeleton(img, kps, kps_lines, kp_thresh=0.4, alpha=1):
     # Convert from plt 0-1 RGBA colors to 0-255 BGR colors for opencv.
@@ -95,10 +96,6 @@ def vis_3d_skeleton(kpt_3d, kpt_3d_vis, kps_lines, filename=None):
         if kpt_3d_vis[i2,0] > 0:
             ax.scatter(kpt_3d[i2,0], kpt_3d[i2,2], -kpt_3d[i2,1], c=colors[l], marker='o')
 
-    x_r = np.array([0, cfg.input_shape[1]], dtype=np.float32)
-    y_r = np.array([0, cfg.input_shape[0]], dtype=np.float32)
-    z_r = np.array([0, 1], dtype=np.float32)
-    
     if filename is None:
         ax.set_title('3D vis')
     else:
@@ -120,3 +117,39 @@ def save_obj(v, f, file_name='output.obj'):
         obj_file.write('f ' + str(f[i][0]+1) + '/' + str(f[i][0]+1) + ' ' + str(f[i][1]+1) + '/' + str(f[i][1]+1) + ' ' + str(f[i][2]+1) + '/' + str(f[i][2]+1) + '\n')
     obj_file.close()
 
+def render_mesh(img, mesh, face, cam_param):
+    # mesh
+    mesh = trimesh.Trimesh(mesh, face)
+    rot = trimesh.transformations.rotation_matrix(
+	np.radians(180), [1, 0, 0])
+    mesh.apply_transform(rot)
+    material = pyrender.MetallicRoughnessMaterial(metallicFactor=0.0, alphaMode='OPAQUE', baseColorFactor=(1.0, 1.0, 0.9, 1.0))
+    mesh = pyrender.Mesh.from_trimesh(mesh, material=material, smooth=False)
+    scene = pyrender.Scene(ambient_light=(0.3, 0.3, 0.3))
+    scene.add(mesh, 'mesh')
+    
+    focal, princpt = cam_param['focal'], cam_param['princpt']
+    camera = pyrender.IntrinsicsCamera(fx=focal[0], fy=focal[1], cx=princpt[0], cy=princpt[1])
+    scene.add(camera)
+ 
+    # renderer
+    renderer = pyrender.OffscreenRenderer(viewport_width=img.shape[1], viewport_height=img.shape[0], point_size=1.0)
+   
+    # light
+    light = pyrender.DirectionalLight(color=[1.0, 1.0, 1.0], intensity=0.8)
+    light_pose = np.eye(4)
+    light_pose[:3, 3] = np.array([0, -1, 1])
+    scene.add(light, pose=light_pose)
+    light_pose[:3, 3] = np.array([0, 1, 1])
+    scene.add(light, pose=light_pose)
+    light_pose[:3, 3] = np.array([1, 1, 2])
+    scene.add(light, pose=light_pose)
+
+    # render
+    rgb, depth = renderer.render(scene, flags=pyrender.RenderFlags.RGBA)
+    rgb = rgb[:,:,:3].astype(np.float32)
+    valid_mask = (depth > 0)[:,:,None]
+
+    # save to image
+    img = rgb * valid_mask + img * (1-valid_mask)
+    return img
