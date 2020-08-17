@@ -116,10 +116,10 @@ You need to follow the directory structure of the `output` folder as below.
 ```  
 ${ROOT}  
 |-- output  
-|-- |-- log  
-|-- |-- model_dump  
-|-- |-- result  
-|-- |-- vis  
+|   |-- log  
+|   |-- model_dump  
+|   |-- result  
+|   |-- vis  
 ```  
 * Creating `output` folder as soft link form is recommended instead of folder form because it would take large storage capacity.  
 * `log` folder contains training log file.  
