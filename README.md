@@ -20,7 +20,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2
   
   
 ## Quick demo  
-* Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`
+* Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`. You should slightly change `torchgeometry` kernel code following [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527).
 * Download the pre-trained I2L-MeshNet from [here](https://drive.google.com/drive/folders/14SJKZuCudli2xNN6pSh1bJepIZYlBfSE?usp=sharing). This is not the [best accurate I2L-MeshNet](https://drive.google.com/drive/folders/1Xf_Z2vgxyb_B4yuWjqxU2F-OfV1RKk_N?usp=sharing), but provides visually smooth meshes. [Here](https://github.com/mks0601/I2L-MeshNet_RELEASE#i2l-meshnet-for-mesh-visualization) is discussion about this.
 * Prepare `input.jpg` and pre-trained snapshot at `demo` folder.
 * Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://drive.google.com/drive/folders/1eOWKgpdZHTmsGwXVeM2Q0PAj8axoP3tR?usp=sharing) at `common/utils/smplpytorch/smplpytorch/native/models`.
@@ -130,7 +130,7 @@ ${ROOT}
 
 ## Running I2L-MeshNet 
 ### Start  
-* Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`
+* Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`. You should slightly change `torchgeometry` kernel code following [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527).
 * In the `main/config.py`, you can change settings of the model including dataset to use, network backbone, and input size and so on.  
 * There are two stages. 1) `lixel` and 2) `param`. In the `lixel` stage, I2L-MeshNet predicts lixel-based 1D heatmaps for each human joint and mesh vertex. In `param` stage, I2L-MeshNet predicts SMPL parameters from lixel-based 1D heatmaps.
   
@@ -269,6 +269,9 @@ PA MPJPE from lixel mesh: 61.95 mm
 MPJPE from param mesh: 99.34 mm
 PA MPJPE from param mesh: 62.47 mm
 ```
+
+## Troubleshoots
+* `RuntimeError: Subtraction, the `-` operator, with a bool tensor is not supported. If you are trying to invert a mask, use the `~` or `logical_not()` operator instead.`: Go to [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527)
 
 ## Reference  
 ```  
