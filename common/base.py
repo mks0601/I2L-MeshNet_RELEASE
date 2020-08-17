@@ -104,16 +104,21 @@ class Trainer(Base):
         for i in range(len(cfg.trainset_2d)):
             trainset2d_loader.append(eval(cfg.trainset_2d[i])(transforms.ToTensor(), "train"))
 
-        self.vertex_num = trainset3d_loader[0].vertex_num
-        self.joint_num = trainset3d_loader[0].joint_num
+
         
         if len(trainset3d_loader) > 0 and len(trainset2d_loader) > 0:
+            self.vertex_num = trainset3d_loader[0].vertex_num
+            self.joint_num = trainset3d_loader[0].joint_num
             trainset3d_loader = MultipleDatasets(trainset3d_loader, make_same_len=False)
             trainset2d_loader = MultipleDatasets(trainset2d_loader, make_same_len=False)
             trainset_loader = MultipleDatasets([trainset3d_loader, trainset2d_loader], make_same_len=True)
         elif len(trainset3d_loader) > 0:
+            self.vertex_num = trainset3d_loader[0].vertex_num
+            self.joint_num = trainset3d_loader[0].joint_num
             trainset_loader = MultipleDatasets(trainset3d_loader, make_same_len=False)
         elif len(trainset2d_loader) > 0:
+            self.vertex_num = trainset2d_loader[0].vertex_num
+            self.joint_num = trainset2d_loader[0].joint_num
             trainset_loader = MultipleDatasets(trainset2d_loader, make_same_len=False)
         else:
             assert 0, "Both 3D training set and 2D training set have zero length."
