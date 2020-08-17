@@ -109,7 +109,7 @@ If you have a problem with 'Download limit' problem when tried to download datas
 * For the SMPL layer, I used [smplpytorch](https://github.com/gulvarol/smplpytorch). The repo is already included in `common/utils/smplpytorch`.
 * Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://drive.google.com/drive/folders/1eOWKgpdZHTmsGwXVeM2Q0PAj8axoP3tR?usp=sharing) at `common/utils/smplpytorch/smplpytorch/native/models`.
 * For the MANO layer, I used [manopth](https://github.com/hassony2/manopth). The repo is already included in `common/utils/manopth`.
-* Download `MANO_RIGHT.pkl` at `common/utils/manopth/mano/models` from [here](https://drive.google.com/drive/folders/1ZJHvus6iSpDEm5BwDOcR5N9T8_VJcG9u?usp=sharing).
+* Download `MANO_RIGHT.pkl` from [here](https://drive.google.com/drive/folders/1ZJHvus6iSpDEm5BwDOcR5N9T8_VJcG9u?usp=sharing) at `common/utils/manopth/mano/models`.
       
 ### Output  
 You need to follow the directory structure of the `output` folder as below.  
