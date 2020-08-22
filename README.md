@@ -5,11 +5,11 @@
 # I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image  
   
 <p align="center">  
-<img src="https://drive.google.com/uc?export=view&id=1V7hDCUgPAuTdxNGNIZaWe3CVVQEMsJFp">  
+<img src="assets/qualitative results.png">  
 </p> 
 
 <p align="middle">
-<img src="https://drive.google.com/uc?export=view&id=1eFR0ZEr4KV7jKjI_fVs3ZQWRE1b9zWzG" width="260" height="160"><img src="https://drive.google.com/uc?export=view&id=16etbYwRrjH-Zc04AAdqASjyyoLXFCXKc" width="260" height="160"><img src="https://drive.google.com/uc?export=view&id=1L6GbPPv_VR1DFJ418OoRaXu5NJsrAGOj" width="260" height="160">
+<img src="assets/video1.gif" width="260" height="160"><img src="assets/video2.gif" width="260" height="160"><img src="assets/video3.gif" width="260" height="160">
 </p>
 
 ## News
@@ -161,11 +161,11 @@ to test I2L-MeshNet in `$STAGE` stage (should be one of `lixel` and `param`) on 
 ## Results  
 Here I report the performance of the I2L-MeshNet.  
 <p align="center">
-<img src="https://drive.google.com/uc?export=view&id=1MlC9I7c6IHISzAO7spM6Nzn0dwMNr_Ou">
+<img src="assets/comparison_sota_h36m_3dpw.png">
 </p>
 
 <p align="center">
-<img src="https://drive.google.com/uc?export=view&id=1NYHjn-ndrwDkBC1OeQDa8tOvh40ulPgf">
+<img src="assets/comparison_sota_freihand.png">
 </p>
 
 #### Human3.6M dataset 
