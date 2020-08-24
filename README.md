@@ -12,11 +12,9 @@
 <img src="assets/video1.gif" width="260" height="160"><img src="assets/video2.gif" width="260" height="160"><img src="assets/video3.gif" width="260" height="160">
 </p>
 
-## News
-:tada: Our I2L-MeshNet wons the **first and second place** at [3DPW challenge](https://virtualhumans.mpi-inf.mpg.de/3DPW_Challenge/) on unknown assocation track in part orientation and joint position metrics, respectively. :tada:
 
 ## Introduction  
-This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image (ECCV 2020)](https://arxiv.org/abs/2008.03713)**.
+This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image (ECCV 2020)](https://arxiv.org/abs/2008.03713)**. Our I2L-MeshNet wons the **first and second place** at [3DPW challenge](https://virtualhumans.mpi-inf.mpg.de/3DPW_Challenge/) on unknown assocation track in part orientation and joint position metrics, respectively.:tada:
   
   
 ## Quick demo  
