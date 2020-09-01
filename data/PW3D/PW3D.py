@@ -72,6 +72,7 @@ class PW3D(torch.utils.data.Dataset):
             else:
                 bbox = process_bbox(np.array(ann['bbox']), img['width'], img['height'])
                 if bbox is None: continue
+                root_joint_depth = None
 
             datalist.append({
                 'img_path': img_path,
