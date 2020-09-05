@@ -55,8 +55,10 @@ class Trainer(Base):
                                         list(model.module.pose2feat.parameters()) + \
                                         list(model.module.mesh_backbone.parameters()) + \
                                         list(model.module.mesh_net.parameters()), lr=cfg.lr)
+            print('The parameters of pose_backbone, pose_net, pose2feat, mesh_backbone, and mesh_net are added to the optimizer.')
         else:
             optimizer = torch.optim.Adam(model.module.param_regressor.parameters(), lr=cfg.lr)
+            print('The parameters of all modules are added to the optimizer.')
 
         return optimizer
 
