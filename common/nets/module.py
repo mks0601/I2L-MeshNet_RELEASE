@@ -102,7 +102,10 @@ class ParamRegressor(nn.Module):
         super(ParamRegressor, self).__init__()
         self.joint_num = joint_num
         self.fc = make_linear_layers([self.joint_num*3, 1024, 512], use_bn=True)
-        self.fc_pose = make_linear_layers([512, 24*6], relu_final=False) # joint orientation
+        if 'FreiHAND' in cfg.trainset_3d + cfg.trainset_2d + [cfg.testset]:
+            self.fc_pose = make_linear_layers([512, 16*6], relu_final=False) # hand joint orientation
+        else:
+            self.fc_pose = make_linear_layers([512, 24*6], relu_final=False) # body joint orientation
         self.fc_shape = make_linear_layers([512, 10], relu_final=False) # shape parameter
 
     def rot6d_to_rotmat(self,x):
