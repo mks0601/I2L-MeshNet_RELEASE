@@ -70,7 +70,7 @@ model = get_model(vertex_num, joint_num, 'test')
 
 model = DataParallel(model).cuda()
 ckpt = torch.load(model_path)
-model.load_state_dict(ckpt['network'])
+model.load_state_dict(ckpt['network'], strict=False)
 model.eval()
 
 # prepare input image
