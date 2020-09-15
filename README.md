@@ -90,7 +90,7 @@ ${ROOT}
 * Download MuCo parsed/composited data and SMPL parameters [[data](https://drive.google.com/drive/folders/1yL2ey3aWHJnh8f_nhWP--IyC9krAPsQN?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1_JrrbHZICDTe1lqi8S6D_Y1ObmrerAoU?usp=sharing)] 
 * Download MS COCO SMPL parameters [[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1Dkb-q10O9S4gQgKhFTxEtlEPqFTy3GJV?usp=sharing)]
 * Download 3DPW parsed data [[data](https://drive.google.com/drive/folders/1fWrx0jnWzcudU6FN6QCZWefaOFSAadgR?usp=sharing)]
-* Download FreiHAND parsed data [[data](https://drive.google.com/drive/folders/1QGWu_nWi5eyrWSkPEOMyK1tAGFWRXQjC?usp=sharing)] (`bbox` in `freihand_eval_coco.json` is from [Detectron2](https://github.com/facebookresearch/detectron2))
+* Download FreiHAND parsed data [[data](https://drive.google.com/drive/folders/1QGWu_nWi5eyrWSkPEOMyK1tAGFWRXQjC?usp=sharing)]
 * All annotation files follow [MS COCO format](http://cocodataset.org/#format-data).  
 * If you want to add your own dataset, you have to convert it to [MS COCO format](http://cocodataset.org/#format-data).  
   
@@ -227,7 +227,7 @@ Load RootNet output from  ../data/MSCOCO/rootnet_output/bbox_root_coco_output.js
 ```
 #### FreiHAND dataset
 * Download I2L-MeshNet trained on [[FreiHand](https://drive.google.com/drive/folders/1NGEScDf2tYtrloLGinqV97SRvfpSJ4o7?usp=sharing)].
-* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[FreiHAND](https://drive.google.com/drive/folders/1OzwQG2ZutJ4Lzg5psilStsv_MO6-cysA?usp=sharing)].
+* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[FreiHAND](https://drive.google.com/drive/folders/1OzwQG2ZutJ4Lzg5psilStsv_MO6-cysA?usp=sharing)]. `bbox` is from [Detectron2](https://github.com/facebookresearch/detectron2).
  ```
 $ python test.py --gpu 4-7 --stage lixel --test_epoch 24
 >>> Using GPU: 4,5,6,7
