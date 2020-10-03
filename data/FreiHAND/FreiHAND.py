@@ -70,7 +70,6 @@ class FreiHAND(torch.utils.data.Dataset):
                 
             else:
                 cam_param, scale = data[db_idx]['cam_param'], data[db_idx]['scale']
-                cam_param['R'] = np.eye(3).astype(np.float32).tolist(); cam_param['t'] = np.zeros((3), dtype=np.float32) # dummy
                 joint_cam = np.ones((self.joint_num,3), dtype=np.float32) # dummy
                 mano_param = {'pose': np.ones((48), dtype=np.float32), 'shape': np.ones((10), dtype=np.float32)}
                 bbox = bbox_root_result[str(image_id)]['bbox'] # bbox should be aspect ratio preserved-extended. It is done in RootNet.
@@ -88,17 +87,9 @@ class FreiHAND(torch.utils.data.Dataset):
         return datalist
 
     def get_mano_coord(self, mano_param, cam_param):
-        pose, shape = mano_param['pose'], mano_param['shape']
-        mano_pose = torch.FloatTensor(pose).view(-1,3); mano_shape = torch.FloatTensor(shape).view(1,-1); # mano parameters (pose: 48 dimension, shape: 10 dimension)
-        R, t = np.array(cam_param['R'], dtype=np.float32).reshape(3,3), np.array(cam_param['t'], dtype=np.float32).reshape(3) # camera rotation and translation
-        mano_trans = torch.from_numpy(t).view(-1,3)
-        
-        # merge root pose and camera rotation 
-        root_pose = mano_pose[self.root_joint_idx,:].numpy()
-        root_pose, _ = cv2.Rodrigues(root_pose)
-        root_pose, _ = cv2.Rodrigues(np.dot(R,root_pose))
-        mano_pose[self.root_joint_idx] = torch.from_numpy(root_pose).view(3)
-        mano_pose = mano_pose.view(1,-1)
+        pose, shape, trans = mano_param['pose'], mano_param['shape'], mano_param['trans']
+        mano_pose = torch.FloatTensor(pose).view(1,-1); mano_shape = torch.FloatTensor(shape).view(1,-1); # mano parameters (pose: 48 dimension, shape: 10 dimension)
+        mano_trans = torch.from_numpy(trans).view(1,3) # translation vector
 
         # get mesh and joint coordinates
         mano_mesh_coord, mano_joint_coord = self.mano.layer(mano_pose, mano_shape, mano_trans)
