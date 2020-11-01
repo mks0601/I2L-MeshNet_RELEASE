@@ -183,9 +183,9 @@ Get bounding box and root from ../data/Human36M/rootnet_output/bbox_root_human36
 08-10 00:26:16 Creating graph...
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 35/35 [00:46<00:00,  1.09it/s]
 MPJPE from lixel mesh: 55.83 mm
-PA MPJPE from lixel mesh: 41.68 mm
+PA MPJPE from lixel mesh: 41.10 mm
 MPJPE from param mesh: 66.05 mm
-PA MPJPE from param mesh: 46.68 mm
+PA MPJPE from param mesh: 45.03 mm
 ```
 
 #### 3DPW dataset
@@ -205,9 +205,9 @@ Get bounding box and root from ../data/PW3D/rootnet_output/bbox_root_pw3d_output
 08-09 20:47:27 Creating graph...
 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 555/555 [08:05<00:00,  1.06s/it]
 MPJPE from lixel mesh: 93.15 mm
-PA MPJPE from lixel mesh: 58.50 mm
+PA MPJPE from lixel mesh: 57.73 mm
 MPJPE from param mesh: 100.04 mm
-PA MPJPE from param mesh: 60.74 mm
+PA MPJPE from param mesh: 60.04 mm
 ```
 #### MSCOCO dataset
 The testing results on MSCOCO dataset are used for visualization (qualitative results).
@@ -265,9 +265,9 @@ Get bounding box and root from ../data/PW3D/rootnet_output/bbox_root_pw3d_output
 08-16 13:57:04 Creating graph...
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8879/8879 [17:42<00:00,  3.58it/s]
 MPJPE from lixel mesh: 93.47 mm
-PA MPJPE from lixel mesh: 61.95 mm
+PA MPJPE from lixel mesh: 60.87 mm
 MPJPE from param mesh: 99.34 mm
-PA MPJPE from param mesh: 62.47 mm
+PA MPJPE from param mesh: 61.80 mm
 ```
 
 ## Troubleshoots
