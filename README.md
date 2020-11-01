@@ -13,7 +13,7 @@
 </p>
 
 ## News
-I merged camera extrinsics with MANO parameters of FreiHAND dataset. If you downloaded `freihand_train_data.json` before and want to use current version of code, you should download `freihand_train_data.json` again.
+There was a code mistake in [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/blob/f7fe78e8e4b68cdc9da66f9c9d3a1b19af37b0fe/common/utils/transforms.py#L40). Basically, the translation during the rigid alignment was wrong. The results in my paper became better after I fix the error.
 
 ## Introduction  
 This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image (ECCV 2020)](https://arxiv.org/abs/2008.03713)**. Our I2L-MeshNet wons the **first and second place** at [3DPW challenge](https://virtualhumans.mpi-inf.mpg.de/3DPW_Challenge/) on unknown assocation track in part orientation and joint position metrics, respectively.:tada:
