@@ -37,7 +37,7 @@ def rigid_transform_3D(A, B):
     varP = np.var(A, axis=0).sum()
     c = 1/varP * np.sum(s) 
 
-    t = -np.dot(R, np.transpose(centroid_A)) + np.transpose(centroid_B)
+    t = -np.dot(c*R, np.transpose(centroid_A)) + np.transpose(centroid_B)
     return c, R, t
 
 def rigid_align(A, B):
