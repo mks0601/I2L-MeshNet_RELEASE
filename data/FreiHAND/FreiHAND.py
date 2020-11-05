@@ -89,7 +89,7 @@ class FreiHAND(torch.utils.data.Dataset):
     def get_mano_coord(self, mano_param, cam_param):
         pose, shape, trans = mano_param['pose'], mano_param['shape'], mano_param['trans']
         mano_pose = torch.FloatTensor(pose).view(1,-1); mano_shape = torch.FloatTensor(shape).view(1,-1); # mano parameters (pose: 48 dimension, shape: 10 dimension)
-        mano_trans = torch.from_numpy(trans).view(1,3) # translation vector
+        mano_trans = torch.FloatTensor(trans).view(1,3) # translation vector
 
         # get mesh and joint coordinates
         mano_mesh_coord, mano_joint_coord = self.mano.layer(mano_pose, mano_shape, mano_trans)
