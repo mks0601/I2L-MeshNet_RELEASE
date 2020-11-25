@@ -18,7 +18,7 @@ class PoseNet(nn.Module):
     def soft_argmax_1d(self, heatmap1d):
         heatmap1d = F.softmax(heatmap1d, 2)
         heatmap_size = heatmap1d.shape[2]
-        coord = heatmap1d * torch.cuda.comm.broadcast(torch.arange(heatmap_size).type(torch.cuda.FloatTensor), devices=[heatmap1d.device.index])[0]
+        coord = heatmap1d * torch.arange(heatmap_size).float().cuda()
         coord = coord.sum(dim=2, keepdim=True)
         return coord
 
@@ -70,7 +70,7 @@ class MeshNet(nn.Module):
     def soft_argmax_1d(self, heatmap1d):
         heatmap1d = F.softmax(heatmap1d, 2)
         heatmap_size = heatmap1d.shape[2]
-        coord = heatmap1d * torch.cuda.comm.broadcast(torch.arange(heatmap_size).type(torch.cuda.FloatTensor), devices=[heatmap1d.device.index])[0]
+        coord = heatmap1d * torch.arange(heatmap_size).float().cuda()
         coord = coord.sum(dim=2, keepdim=True)
         return coord
 
