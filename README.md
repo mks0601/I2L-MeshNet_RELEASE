@@ -27,6 +27,12 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2
 * Go to `demo` folder and edit `bbox` in [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/blob/561fac8a74ae8bdc0429edc15e5dc4c47fda11bf/demo/demo.py#L83).
 * run `python demo.py --gpu 0 --stage param --test_epoch 8` if you want to run on gpu 0.
 * You can see `output_mesh_lixel.jpg`, `output_mesh_param.jpg`, `rendered_mesh_lixel.jpg`, `rendered_mesh_param.jpg`, `output_mesh_lixel.obj`, and `output_mesh_param.obj`. `*_lixel.*` are from lixel-based 1D heatmap of mesh vertices and `*_param.*` are from regressed SMPL parameters.
+* If you run this code in ssh environment without display device, do follow:
+```
+1、Install oemesa follow https://pyrender.readthedocs.io/en/latest/install/
+2、Reinstall the specific pyopengl fork: https://github.com/mmatl/pyopengl
+3、Set opengl's backend to egl or osmesa via os.environ["PYOPENGL_PLATFORM"] = "egl"
+```
 
 ## Directory  
 ### Root  
