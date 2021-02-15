@@ -23,7 +23,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2
 * Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`. You should slightly change `torchgeometry` kernel code following [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527).
 * Download the pre-trained I2L-MeshNet from [here](https://drive.google.com/drive/folders/14SJKZuCudli2xNN6pSh1bJepIZYlBfSE?usp=sharing). This is not the [best accurate I2L-MeshNet](https://drive.google.com/drive/folders/1Xf_Z2vgxyb_B4yuWjqxU2F-OfV1RKk_N?usp=sharing), but provides visually smooth meshes. [Here](https://github.com/mks0601/I2L-MeshNet_RELEASE#i2l-meshnet-for-mesh-visualization) is discussion about this.
 * Prepare `input.jpg` and pre-trained snapshot at `demo` folder.
-* Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://drive.google.com/drive/folders/1eOWKgpdZHTmsGwXVeM2Q0PAj8axoP3tR?usp=sharing) at `common/utils/smplpytorch/smplpytorch/native/models`.
+* Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://smpl.is.tue.mpg.de/) at `common/utils/smplpytorch/smplpytorch/native/models`.
 * Go to `demo` folder and edit `bbox` in [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/blob/561fac8a74ae8bdc0429edc15e5dc4c47fda11bf/demo/demo.py#L83).
 * run `python demo.py --gpu 0 --stage param --test_epoch 8` if you want to run on gpu 0.
 * You can see `output_mesh_lixel.jpg`, `output_mesh_param.jpg`, `rendered_mesh_lixel.jpg`, `rendered_mesh_param.jpg`, `output_mesh_lixel.obj`, and `output_mesh_param.obj`. `*_lixel.*` are from lixel-based 1D heatmap of mesh vertices and `*_param.*` are from regressed SMPL parameters.
@@ -114,9 +114,9 @@ If you have a problem with 'Download limit' problem when tried to download datas
 
 ### Pytorch SMPL and MANO layer
 * For the SMPL layer, I used [smplpytorch](https://github.com/gulvarol/smplpytorch). The repo is already included in `common/utils/smplpytorch`.
-* Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://drive.google.com/drive/folders/1eOWKgpdZHTmsGwXVeM2Q0PAj8axoP3tR?usp=sharing) at `common/utils/smplpytorch/smplpytorch/native/models`.
+* Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl`, `basicModel_m_lbs_10_207_0_v1.0.0.pkl`, and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://smpl.is.tue.mpg.de/) at `common/utils/smplpytorch/smplpytorch/native/models`.
 * For the MANO layer, I used [manopth](https://github.com/hassony2/manopth). The repo is already included in `common/utils/manopth`.
-* Download `MANO_RIGHT.pkl` from [here](https://drive.google.com/drive/folders/1ZJHvus6iSpDEm5BwDOcR5N9T8_VJcG9u?usp=sharing) at `common/utils/manopth/mano/models`.
+* Download `MANO_RIGHT.pkl` from [here](https://mano.is.tue.mpg.de/) at `common/utils/manopth/mano/models`.
       
 ### Output  
 You need to follow the directory structure of the `output` folder as below.  
