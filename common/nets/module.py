@@ -118,13 +118,14 @@ class ParamRegressor(nn.Module):
         return torch.stack((b1, b2, b3), dim=-1)
 
     def forward(self, pose_3d):
+        batch_size = pose_3d.shape[0]
         pose_3d = pose_3d.view(-1,self.joint_num*3)
         feat = self.fc(pose_3d)
 
         pose = self.fc_pose(feat)
         pose = self.rot6d_to_rotmat(pose)
         pose = torch.cat([pose,torch.zeros((pose.shape[0],3,1)).cuda().float()],2)
-        pose = tgm.rotation_matrix_to_angle_axis(pose).reshape(-1,72)
+        pose = tgm.rotation_matrix_to_angle_axis(pose).reshape(batch_size,-1)
         
         shape = self.fc_shape(feat)
 
