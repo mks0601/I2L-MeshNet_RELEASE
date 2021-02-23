@@ -148,7 +148,7 @@ class FreiHAND(torch.utils.data.Dataset):
             mano_pose[self.root_joint_idx] = root_pose.reshape(3)
             mano_pose = mano_pose.reshape(-1)
             # mano coordinate
-            mano_joint_cam = mano_joint_cam - mano_joint_cam[self.root_joint_idx,None] # root-relative
+            mano_joint_cam = (mano_joint_cam - mano_joint_cam[self.root_joint_idx,None]) * 1000 # root-relative, meter to milimeter
             mano_joint_cam = np.dot(rot_aug_mat, mano_joint_cam.transpose(1,0)).transpose(1,0)
 
             orig_joint_img = np.zeros((self.joint_num,3), dtype=np.float32) # dummy
