@@ -103,7 +103,9 @@ ${ROOT}
 * All annotation files follow [MS COCO format](http://cocodataset.org/#format-data).  
 * If you want to add your own dataset, you have to convert it to [MS COCO format](http://cocodataset.org/#format-data).  
   
-If you have a problem with 'Download limit' problem when tried to download dataset from google drive link, please try this trick.  
+  
+* To download multiple files from Google drive without compressing them, try [this](https://chrome.google.com/webstore/detail/drive-multiple-downloader/baolodbihgboogdhkikimhadihambecp).
+* If you have a problem with 'Download limit' problem when tried to download dataset from google drive link, please try this trick.  
 ```  
 * Go the shared folder, which contains files you want to copy to your drive  
 * Select all the files you want to copy  
