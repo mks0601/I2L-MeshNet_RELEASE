@@ -1,7 +1,3 @@
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/i2l-meshnet-image-to-lixel-prediction-network-1/3d-human-pose-estimation-on-3dpw)](https://paperswithcode.com/sota/3d-human-pose-estimation-on-3dpw?p=i2l-meshnet-image-to-lixel-prediction-network-1)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/i2l-meshnet-image-to-lixel-prediction-network-1/3d-hand-pose-estimation-on-freihand)](https://paperswithcode.com/sota/3d-hand-pose-estimation-on-freihand?p=i2l-meshnet-image-to-lixel-prediction-network-1)
-
-
 # I2L-MeshNet: Image-to-Lixel Prediction Network for Accurate 3D Human Pose and Mesh Estimation from a Single RGB Image  
   
 <p align="center">  
