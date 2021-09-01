@@ -29,6 +29,10 @@ class Model(nn.Module):
         self.root_joint_idx = self.human_model.root_joint_idx
         self.mesh_face = self.human_model.face
         self.joint_regressor = self.human_model.joint_regressor
+        if cfg.stage == 'lixel':
+            self.trainable_modules = [self.pose_backbone, self.pose_net, self.pose2feat, self.mesh_backbone, self.mesh_net]
+        else:
+            self.trainable_modules = [self.param_regressor]
 
         self.coord_loss = CoordLoss()
         self.param_loss = ParamLoss()
