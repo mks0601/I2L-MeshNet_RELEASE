@@ -49,17 +49,10 @@ class Trainer(Base):
         super(Trainer, self).__init__(log_name = 'train_logs.txt')
 
     def get_optimizer(self, model):
-        if cfg.stage == 'lixel':
-            optimizer = torch.optim.Adam(list(model.module.pose_backbone.parameters()) + \
-                                        list(model.module.pose_net.parameters()) + \
-                                        list(model.module.pose2feat.parameters()) + \
-                                        list(model.module.mesh_backbone.parameters()) + \
-                                        list(model.module.mesh_net.parameters()), lr=cfg.lr)
-            print('The parameters of pose_backbone, pose_net, pose2feat, mesh_backbone, and mesh_net are added to the optimizer.')
-        else:
-            optimizer = torch.optim.Adam(model.module.param_regressor.parameters(), lr=cfg.lr)
-            print('The parameters of all modules are added to the optimizer.')
-
+        total_params = []
+        for module in model.trainable_modules:
+            total_params.append(module.parameters())
+        optimizer = torch.optim.Adam(total_params, lr=cfg.lr)
         return optimizer
 
     def save_model(self, state, epoch):
