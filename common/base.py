@@ -50,7 +50,7 @@ class Trainer(Base):
 
     def get_optimizer(self, model):
         total_params = []
-        for module in model.trainable_modules:
+        for module in model.module.trainable_modules:
             total_params.append(module.parameters())
         optimizer = torch.optim.Adam(total_params, lr=cfg.lr)
         return optimizer
