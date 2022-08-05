@@ -14,7 +14,7 @@ sys.path.insert(0, osp.join('..', 'data'))
 sys.path.insert(0, osp.join('..', 'common'))
 from config import cfg
 from model import get_model
-from utils.preprocessing import process_bbox, generate_patch_image
+from utils.preprocessing import load_img, process_bbox, generate_patch_image
 from utils.transforms import pixel2cam, cam2pixel
 from utils.vis import vis_mesh, save_obj, render_mesh
 
@@ -76,7 +76,7 @@ model.eval()
 # prepare input image
 transform = transforms.ToTensor()
 img_path = 'input.jpg'
-original_img = cv2.imread(img_path)
+original_img = load_img(img_path)
 original_img_height, original_img_width = original_img.shape[:2]
 
 # prepare bbox
