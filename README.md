@@ -91,25 +91,14 @@ ${ROOT}
 |   |   |   |-- freihand_eval_coco.json
 |   |   |   |-- freihand_eval_data.json
 ```  
-* Download Human3.6M parsed data and SMPL parameters [[data](https://drive.google.com/drive/folders/1r0B9I3XxIIW_jsXjYinDpL6NFcxTZart?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/12fCumEgs9PXT-dAaOGq0EDpl9dGKKorF?usp=sharing)]
-* Download MuCo parsed/composited data and SMPL parameters [[data](https://drive.google.com/drive/folders/1dfhFa1kBHYKLTKuprNc7xixt3yyKEky5?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1Wm1_6tn1u-_RE1iUlibIWfS75O79aJRz?usp=sharing)] 
-* Download MS COCO SMPL parameters [[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1zLrbBaZzxsMx6QtDXqHm4JEuKNOez5dm?usp=sharing)]
-* Download 3DPW parsed data [[data](https://drive.google.com/drive/folders/1HByTBsdg_A_o-d89qd55glTl44ya3dOs?usp=sharing)]
-* Download FreiHAND parsed data [[data](https://drive.google.com/drive/folders/13qR8EhHFgvJ_AjgHz-JZKQQzYJX7oLpE?usp=sharing)]
+* Download Human3.6M parsed data and SMPL parameters [[data](https://1drv.ms/f/s!All7gdNh7XE5kGrEdXkTKN3qWOmg?e=voy0F7)][[SMPL parameters from SMPLify-X](https://1drv.ms/f/s!All7gdNh7XE5kGnf8tHVCLcg-mal?e=YGXVhs)]
+* Download MuCo parsed/composited data and SMPL parameters [[data](https://1drv.ms/f/s!All7gdNh7XE5kRnWfDfIeZ9uOeS9?e=kEifHu)][[SMPL parameters from SMPLify-X](https://1drv.ms/f/s!All7gdNh7XE5kSdHwA5ssFZEp-UX?e=zq0rni)] 
+* Download MS COCO SMPL parameters [[SMPL parameters from SMPLify-X](https://1drv.ms/f/s!All7gdNh7XE5lXmhmAIyFXVCtctc?e=tbfzXG)]
+* Download 3DPW parsed data [[data](https://1drv.ms/f/s!All7gdNh7XE5lVy4n0H6ACMSpr5W?e=qdWqse)]
+* Download FreiHAND parsed data [[data](https://1drv.ms/f/s!All7gdNh7XE5lW9LwUNRbHPN62_Y?e=srVCxx)]
 * All annotation files follow [MS COCO format](http://cocodataset.org/#format-data).  
 * If you want to add your own dataset, you have to convert it to [MS COCO format](http://cocodataset.org/#format-data).  
   
-  
-To download multiple files from Google drive without compressing them, try [this](https://chrome.google.com/webstore/detail/drive-multiple-downloader/baolodbihgboogdhkikimhadihambecp).
-If you have a problem with 'Download limit' problem when tried to download dataset from google drive link, please try this trick.  
-```  
-* Go the shared folder, which contains files you want to copy to your drive  
-* Select all the files you want to copy  
-* In the upper right corner click on three vertical dots and select “make a copy”  
-* Then, the file is copied to your personal google drive account. You can download it from your personal account.  
-```  
-
-
 ### Pytorch SMPL and MANO layer
 * For the SMPL layer, I used [smplpytorch](https://github.com/gulvarol/smplpytorch). The repo is already included in `common/utils/smplpytorch`.
 * Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl` and `basicModel_m_lbs_10_207_0_v1.0.0.pkl` from [here](https://smpl.is.tue.mpg.de/) and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](http://smplify.is.tue.mpg.de/). Place them at `common/utils/smplpytorch/smplpytorch/native/models`.
