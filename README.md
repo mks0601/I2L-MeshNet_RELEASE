@@ -17,7 +17,7 @@ This repo is official **[PyTorch](https://pytorch.org)** implementation of **[I2
   
 ## Quick demo  
 * Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.3 and run `sh requirements.sh`. You should slightly change `torchgeometry` kernel code following [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/issues/6#issuecomment-675152527).
-* Download the pre-trained I2L-MeshNet from [here](https://1drv.ms/u/s!All7gdNh7XE5oBTlGvS2c207XOS9?e=10AHME). This is not the [best accurate I2L-MeshNet](https://1drv.ms/u/s!All7gdNh7XE5oBz6G-4CyFbrdjp0?e=AHJyL8), but provides visually smooth meshes. [Here](https://github.com/mks0601/I2L-MeshNet_RELEASE#i2l-meshnet-for-mesh-visualization) is discussion about this.
+* Download the pre-trained I2L-MeshNet from [here](https://drive.google.com/file/d/14qAoFev6Rp_QY27f3cTztmIWTi7MVsnO/view?usp=sharing). This is not the [best accurate I2L-MeshNet](https://drive.google.com/file/d/1Ov6eYbBsgtmnrquo7l1plAT_gW7Gs0Ki/view?usp=sharing), but provides visually smooth meshes. [Here](https://github.com/mks0601/I2L-MeshNet_RELEASE#i2l-meshnet-for-mesh-visualization) is discussion about this.
 * Prepare `input.jpg` and pre-trained snapshot at `demo` folder.
 * Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl` and `basicModel_m_lbs_10_207_0_v1.0.0.pkl` from [here](https://smpl.is.tue.mpg.de/) and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](http://smplify.is.tue.mpg.de/). Place them at `common/utils/smplpytorch/smplpytorch/native/models`.
 * Go to `demo` folder and edit `bbox` in [here](https://github.com/mks0601/I2L-MeshNet_RELEASE/blob/561fac8a74ae8bdc0429edc15e5dc4c47fda11bf/demo/demo.py#L83).
@@ -91,14 +91,25 @@ ${ROOT}
 |   |   |   |-- freihand_eval_coco.json
 |   |   |   |-- freihand_eval_data.json
 ```  
-* Download Human3.6M parsed data and SMPL parameters [[data](https://1drv.ms/f/s!All7gdNh7XE5kGrEdXkTKN3qWOmg?e=voy0F7)][[SMPL parameters from SMPLify-X](https://1drv.ms/f/s!All7gdNh7XE5kGnf8tHVCLcg-mal?e=YGXVhs)]
-* Download MuCo parsed/composited data and SMPL parameters [[data](https://1drv.ms/f/s!All7gdNh7XE5kRnWfDfIeZ9uOeS9?e=kEifHu)][[SMPL parameters from SMPLify-X](https://1drv.ms/f/s!All7gdNh7XE5kSdHwA5ssFZEp-UX?e=zq0rni)] 
-* Download MS COCO SMPL parameters [[SMPL parameters from SMPLify-X](https://1drv.ms/f/s!All7gdNh7XE5lXmhmAIyFXVCtctc?e=tbfzXG)]
-* Download 3DPW parsed data [[data](https://1drv.ms/f/s!All7gdNh7XE5lVy4n0H6ACMSpr5W?e=qdWqse)]
-* Download FreiHAND parsed data [[data](https://1drv.ms/f/s!All7gdNh7XE5lW9LwUNRbHPN62_Y?e=srVCxx)]
+* Download Human3.6M parsed data and SMPL parameters [[data](https://drive.google.com/drive/folders/1r0B9I3XxIIW_jsXjYinDpL6NFcxTZart?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/12fCumEgs9PXT-dAaOGq0EDpl9dGKKorF?usp=sharing)]
+* Download MuCo parsed/composited data and SMPL parameters [[data](https://drive.google.com/drive/folders/1dfhFa1kBHYKLTKuprNc7xixt3yyKEky5?usp=sharing)][[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1Wm1_6tn1u-_RE1iUlibIWfS75O79aJRz?usp=sharing)] 
+* Download MS COCO SMPL parameters [[SMPL parameters from SMPLify-X](https://drive.google.com/drive/folders/1zLrbBaZzxsMx6QtDXqHm4JEuKNOez5dm?usp=sharing)]
+* Download 3DPW parsed data [[data](https://drive.google.com/drive/folders/1HByTBsdg_A_o-d89qd55glTl44ya3dOs?usp=sharing)]
+* Download FreiHAND parsed data [[data](https://drive.google.com/drive/folders/13qR8EhHFgvJ_AjgHz-JZKQQzYJX7oLpE?usp=sharing)]
 * All annotation files follow [MS COCO format](http://cocodataset.org/#format-data).  
 * If you want to add your own dataset, you have to convert it to [MS COCO format](http://cocodataset.org/#format-data).  
   
+  
+To download multiple files from Google drive without compressing them, try [this](https://chrome.google.com/webstore/detail/drive-multiple-downloader/baolodbihgboogdhkikimhadihambecp).
+If you have a problem with 'Download limit' problem when tried to download dataset from google drive link, please try this trick.  
+```  
+* Go the shared folder, which contains files you want to copy to your drive  
+* Select all the files you want to copy  
+* In the upper right corner click on three vertical dots and select “make a copy”  
+* Then, the file is copied to your personal google drive account. You can download it from your personal account.  
+```  
+
+
 ### Pytorch SMPL and MANO layer
 * For the SMPL layer, I used [smplpytorch](https://github.com/gulvarol/smplpytorch). The repo is already included in `common/utils/smplpytorch`.
 * Download `basicModel_f_lbs_10_207_0_v1.0.0.pkl` and `basicModel_m_lbs_10_207_0_v1.0.0.pkl` from [here](https://smpl.is.tue.mpg.de/) and `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](http://smplify.is.tue.mpg.de/). Place them at `common/utils/smplpytorch/smplpytorch/native/models`.
@@ -163,8 +174,8 @@ Here I report the performance of the I2L-MeshNet.
 </p>
 
 #### Human3.6M dataset 
-* Download I2L-MeshNet trained on [[Human3.6M+MSCOCO](https://1drv.ms/u/s!All7gdNh7XE5oB6Gd3Duoa4VB0OE?e=rffkbz)].
-* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[Human3.6M](https://1drv.ms/u/s!All7gdNh7XE5nnovCHJd-G9kncy0?e=6Yh55a)].
+* Download I2L-MeshNet trained on [[Human3.6M+MSCOCO](https://drive.google.com/file/d/1c8zzKjnwMmErRDXlt8keVIS9Xoa7lG0c/view?usp=sharing)].
+* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[Human3.6M](https://drive.google.com/drive/folders/15qLaV3KdtPjpXljctlS2gcq4N-GVSDIc?usp=sharing)].
 ```
 $ python test.py --gpu 4-7 --stage param --test_epoch 17
 >>> Using GPU: 4,5,6,7
@@ -183,8 +194,8 @@ PA MPJPE from param mesh: 45.03 mm
 ```
 
 #### 3DPW dataset
-* Download I2L-MeshNet trained on [[Human3.6M+MuCo+MSCOCO](https://1drv.ms/u/s!All7gdNh7XE5oBz6G-4CyFbrdjp0?e=qjrBlR)].
-* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[3DPW](https://1drv.ms/u/s!All7gdNh7XE5oCUWoJLA_D6z_TVS?e=X7Un1r)].
+* Download I2L-MeshNet trained on [[Human3.6M+MuCo+MSCOCO](https://drive.google.com/file/d/1Ov6eYbBsgtmnrquo7l1plAT_gW7Gs0Ki/view?usp=sharing)].
+* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[3DPW](https://drive.google.com/file/d/1oqSllmOlapJFW7LqUEEyheqgnjP11Ol9/view?usp=sharing)].
 ```
 $ python test.py --gpu 4-7 --stage param --test_epoch 7
 >>> Using GPU: 4,5,6,7
@@ -205,8 +216,8 @@ PA MPJPE from param mesh: 60.04 mm
 ```
 #### MSCOCO dataset
 The testing results on MSCOCO dataset are used for visualization (qualitative results).
-* Download I2L-MeshNet trained on [[Human3.6M+MuCo+MSCOCO](https://1drv.ms/u/s!All7gdNh7XE5oBz6G-4CyFbrdjp0?e=1kvTyL)].
-* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) [[MSCOCO](https://1drv.ms/u/s!All7gdNh7XE5nnmI7nHTlCNH7Zh9?e=uNsPHI)].
+* Download I2L-MeshNet trained on [[Human3.6M+MuCo+MSCOCO](https://drive.google.com/file/d/1Ov6eYbBsgtmnrquo7l1plAT_gW7Gs0Ki/view?usp=sharing)].
+* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) [[MSCOCO](https://drive.google.com/file/d/1wEliu1l6YrXLYzwUIQUM8IYpevAFAeYf/view?usp=sharing)].
 ```
 $ python test.py --gpu 4-7 --stage param --test_epoch 7
 >>> Using GPU: 4,5,6,7
@@ -222,8 +233,8 @@ Load RootNet output from  ../data/MSCOCO/rootnet_output/bbox_root_coco_output.js
 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [01:31<00:00,  1.05it/s]
 ```
 #### FreiHAND dataset
-* Download I2L-MeshNet trained on [[FreiHand](https://1drv.ms/u/s!All7gdNh7XE5oBLw_yfJqARz37PA?e=ysPl30)].
-* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[FreiHAND](https://1drv.ms/u/s!All7gdNh7XE5oCafOjvooLr-FvKh?e=QgBm0A)]. `bbox` is from [Detectron2](https://github.com/facebookresearch/detectron2).
+* Download I2L-MeshNet trained on [[FreiHand](https://drive.google.com/file/d/12NJRiIBG3RPqWHS93InlyGm3WSZrT8rX/view?usp=sharing)].
+* Download bounding boxs and root joint coordinates (from [RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)) of [[FreiHAND](https://drive.google.com/file/d/1LqKP3gFCDNC2epV-vsdwOZeR6_5sUZU2/view?usp=sharing)]. `bbox` is from [Detectron2](https://github.com/facebookresearch/detectron2).
  ```
 $ python test.py --gpu 4-7 --stage lixel --test_epoch 24
 >>> Using GPU: 4,5,6,7
@@ -242,7 +253,7 @@ Saved at ../output/result/pred.json
   
   #### I2L-MeshNet for mesh visualization
 `loss['joint_orig']` and `loss['mesh_joint_orig']` in `main/model.py` makes the lixel-based meshes visually not smooth but 3D pose from meshes more accurate. This is because the loss functions are calculated from joint coordinates of each dataset, not from SMPL joint set. Thus, for the visually pleasant lixel-based meshes, disable the two loss functions when training.
-* Download I2L-MeshNet trained on [[Human3.6M+MuCo+MSCOCO] without `loss['joint_orig']` and `loss['mesh_joint_orig']`](https://1drv.ms/u/s!All7gdNh7XE5oBfArfUkCuUBK8fM?e=4pqX9r).
+* Download I2L-MeshNet trained on [[Human3.6M+MuCo+MSCOCO] without `loss['joint_orig']` and `loss['mesh_joint_orig']`](https://drive.google.com/file/d/1QuDfHYZSQpafCdi6Ibsh-U41nQvCPAcQ/view?usp=sharing).
 * Below is the test result on 3DPW dataset. As the results show, it is worse than the above [best accurate I2L-MeshNet](https://github.com/mks0601/I2L-MeshNet_RELEASE#3dpw-dataset).
 
 ```
@@ -276,5 +287,4 @@ booktitle = {European Conference on Computer Vision (ECCV)},
 year = {2020}  
 }  
 ```
-
 
